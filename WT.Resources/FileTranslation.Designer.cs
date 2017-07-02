@@ -88,7 +88,7 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^how many Credits is ((\w+ )+\?$.
+        ///   Looks up a localized string similar to ^how many Credits is ([\w ]+) \?$.
         /// </summary>
         public static string AskAlienToCredits {
             get {
@@ -97,7 +97,7 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^how much is ( \w+)+ ?\?$.
+        ///   Looks up a localized string similar to ^how much is ([\w ]+) \?$.
         /// </summary>
         public static string AskAlienToNumber {
             get {

@@ -106,11 +106,29 @@ namespace WT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unknown alien number or thing: &apos;{0}&apos;.
+        /// </summary>
+        public static string UnknownAlienNumberOrThing {
+            get {
+                return ResourceManager.GetString("UnknownAlienNumberOrThing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown alien to roman conversion: &apos;{0}&apos;.
         /// </summary>
         public static string UnknownAlienToRomanConversion {
             get {
                 return ResourceManager.GetString("UnknownAlienToRomanConversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not in roman numbers format: &apos;{0}&apos;.
+        /// </summary>
+        public static string UnknownRomanNumber {
+            get {
+                return ResourceManager.GetString("UnknownRomanNumber", resourceCulture);
             }
         }
     }

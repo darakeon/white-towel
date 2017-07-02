@@ -61,6 +61,8 @@ namespace WT.Generics
 			if (count5 > 1 || count50 > 1 || count500 > 1)
 				return null;
 
+			var lastNumber = Int32.MaxValue;
+
 			for (var n = 0; n < numbers.Count; n++)
 			{
 				if (numbers[n] == 0)
@@ -82,15 +84,15 @@ namespace WT.Generics
 					if (numbers[n] == null)
 						return null;
 				}
+
+				if (lastNumber < numbers[n] || lastNumber / 4m == numbers[n] || lastNumber / 9m == numbers[n])
+					return null;
+
+				if (numbers[n].HasValue)
+					lastNumber = numbers[n].Value;
 			}
 
 			var result = numbers.Where(n => n != 0).ToList();
-
-			for (var n = 0; n < result.Count - 1; n++)
-			{
-				if (result[n] < result[n + 1])
-					return null;
-			}
 
 			return result.Sum();
 		}

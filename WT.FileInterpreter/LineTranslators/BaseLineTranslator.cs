@@ -26,7 +26,9 @@ namespace WT.FileInterpreter.LineTranslators
 		public static BaseLineTranslator GetTranslator(Interpreter interpreter, String line)
 		{
 			return getTranslator<LineTranslatorAlienToRoman>(interpreter, line)
-				?? getTranslator<LineTranslatorAlienToCredits>(interpreter, line);
+				?? getTranslator<LineTranslatorAlienToCredits>(interpreter, line)
+				?? getTranslator<LineTranslatorAskAlienToNumber>(interpreter, line)
+				?? getTranslator<LineTranslatorAskAlienToCredits>(interpreter, line);
 		}
 
 		private static BaseLineTranslator getTranslator<T>(Interpreter interpreter, String line)
@@ -58,6 +60,5 @@ namespace WT.FileInterpreter.LineTranslators
 			TranslateAlienToRoman,
 		}
 
-
-	}
+    }
 }

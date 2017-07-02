@@ -41,9 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interpreter.cs" />
+    <Compile Include="LineTranslators\BaseLineTranslatorAsk.cs" />
     <Compile Include="LineTranslators\LineTranslatorAlienToCredits.cs" />
     <Compile Include="LineTranslators\LineTranslatorAlienToRoman.cs" />
     <Compile Include="LineTranslators\BaseLineTranslator.cs" />
+    <Compile Include="LineTranslators\LineTranslatorAskAlienToCredits.cs" />
+    <Compile Include="LineTranslators\LineTranslatorAskAlienToNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

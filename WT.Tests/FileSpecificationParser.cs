@@ -163,7 +163,7 @@ namespace WT.Tests
 
 			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 
-			steps.ThenIWillHaveTheseAnswers("Unknown alien to roman conversion: 'IL'");
+			steps.ThenIWillHaveTheseAnswers("Not in roman numbers format: 'IL'");
 
 			steps.ThenIWillHaveTheseConversions(
 				Tuple.Create("glob", "I"),

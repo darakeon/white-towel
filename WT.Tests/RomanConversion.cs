@@ -88,7 +88,14 @@ namespace WT.Tests
 			AssertEqual("DCM", null);
 			AssertEqual("LXC", null);
 			AssertEqual("VIX", null);
-		}
+
+			AssertEqual("IVI", null);
+			AssertEqual("IXI", null);
+			AssertEqual("XLX", null);
+			AssertEqual("XCX", null);
+			AssertEqual("CDC", null);
+			AssertEqual("CMC", null);
+        }
 
 
 

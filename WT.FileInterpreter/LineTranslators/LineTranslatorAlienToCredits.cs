@@ -42,7 +42,7 @@ namespace WT.FileInterpreter.LineTranslators
 				{
 					value = null;
 
-					var message = String.Format(Messages.UnknownAlienToRomanConversion, romanDivisor);
+					var message = String.Format(Messages.UnknownRomanNumber, romanDivisor);
 					Interpreter.AddMessage(message);
 				}
 				else

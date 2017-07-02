@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FileQuestionsParser.cs" />
     <Compile Include="FileSpecificationParser.cs" />
     <Compile Include="FileStep.cs" />
     <Compile Include="FileReader.cs" />
