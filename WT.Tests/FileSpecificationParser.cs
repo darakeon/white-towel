@@ -48,8 +48,6 @@ namespace WT.Tests
 			);
 		}
 
-
-
 		[TestMethod]
 		public void FileWithDuplicateRomanSpecifications()
 		{
@@ -68,8 +66,6 @@ namespace WT.Tests
 				Tuple.Create("glob", "I")
 			);
 		}
-
-
 
 		[TestMethod]
 		public void FileWithChangeInRomanSpecifications()
@@ -114,8 +110,6 @@ namespace WT.Tests
 			);
 		}
 
-
-
 		[TestMethod]
 		public void FileWithDuplicateCreditSpecifications()
 		{
@@ -134,8 +128,6 @@ namespace WT.Tests
 				Tuple.Create("Silver", 17m)
 			);
 		}
-
-
 
 		[TestMethod]
 		public void FileWithChangeInCreditSpecifications()
@@ -158,7 +150,38 @@ namespace WT.Tests
 
 
 
+		[TestMethod]
+		public void FileWithAlienRomanCreditSpecifications()
+		{
+			var steps = new FileStep();
 
+			steps.GivenIHaveThisFile("towel.txt"
+				, "glob is I"
+				, "prok is V"
+				, "pish is X"
+				, "tegj is L"
+				, "glob glob Silver is 34 Credits"
+				, "glob prok Gold is 57800 Credits"
+				, "pish pish Iron is 3910 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers();
+
+			steps.ThenIWillHaveTheseConversions(
+				Tuple.Create("glob", "I"),
+				Tuple.Create("prok", "V"),
+				Tuple.Create("pish", "X"),
+				Tuple.Create("tegj", "L")
+			);
+
+			steps.ThenIWillHaveTheseThingsValues(
+				Tuple.Create("Silver", 17m),
+				Tuple.Create("Gold", 14450m),
+				Tuple.Create("Iron", 195.5m)
+			);
+		}
 
 	}
 }
