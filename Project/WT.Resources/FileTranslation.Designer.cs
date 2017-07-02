@@ -79,6 +79,15 @@ namespace WT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is {1} {2}.
+        /// </summary>
+        public static string AnswerAlienToThing {
+            get {
+                return ResourceManager.GetString("AnswerAlienToThing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I have no idea what you are talking about.
         /// </summary>
         public static string AnswerNoIdea {
@@ -88,7 +97,7 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^how many Credits is ([\w ]+) \?$.
+        ///   Looks up a localized string similar to ^how many Credits is ([\w ]+) ?\?$.
         /// </summary>
         public static string AskAlienToCredits {
             get {
@@ -97,11 +106,20 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^how much is ([\w ]+) \?$.
+        ///   Looks up a localized string similar to ^how much is ([\w ]+) ?\?$.
         /// </summary>
         public static string AskAlienToNumber {
             get {
                 return ResourceManager.GetString("AskAlienToNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^how many ([\w ]+) is ([\w ]+) ?\?$.
+        /// </summary>
+        public static string AskAlienToThing {
+            get {
+                return ResourceManager.GetString("AskAlienToThing", resourceCulture);
             }
         }
         

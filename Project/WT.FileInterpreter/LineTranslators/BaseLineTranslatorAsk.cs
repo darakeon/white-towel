@@ -15,13 +15,16 @@ namespace WT.FileInterpreter.LineTranslators
 			this.rightAnswer = rightAnswer;
 		}
 
+		public abstract String GetValue();
+		public abstract String GetThing();
+
 		public override void Translate()
 		{
-			var value = Match.Groups[1].Value.Trim();
+			var value = GetValue();
 			var parts = value.Split(' ');
 
 			var roman = String.Empty;
-			var thing = 1m;
+			var thingValue = 1m;
 			var lastRoman = parts.Length;
 
 			for (var p = 0; p < parts.Length; p++)
@@ -47,7 +50,7 @@ namespace WT.FileInterpreter.LineTranslators
 
 				if (Interpreter.ThingValueDictionary.ContainsKey(thingName))
 				{
-					thing *= Interpreter.ThingValueDictionary[thingName];
+					thingValue *= Interpreter.ThingValueDictionary[thingName];
 				}
 				else
 				{
@@ -58,10 +61,13 @@ namespace WT.FileInterpreter.LineTranslators
 			}
 
 			var arabic = RomanConversor.Convert(roman);
+			var thingToBeValued = GetThing();
 
-			if (arabic.HasValue)
+			var finalValue = getFinalValue(arabic, thingValue, thingToBeValued);
+
+			if (finalValue.HasValue)
 			{
-				var message = String.Format(rightAnswer, value, (int) (arabic*thing));
+				var message = String.Format(rightAnswer, value, finalValue, thingToBeValued);
 				Interpreter.AddInfo(message, Order);
 			}
 			else
@@ -69,7 +75,30 @@ namespace WT.FileInterpreter.LineTranslators
 				var message = String.Format(Messages.UnknownRomanNumber, roman);
 				Interpreter.AddError(message, Order);
 			}
+
 		}
+
+		private int? getFinalValue(int? arabic, decimal thingValue, string thingToBeValued)
+		{
+			if (!arabic.HasValue)
+				return null;
+
+			var finalValue = (int?) (arabic*thingValue);
+
+			if (!String.IsNullOrEmpty(thingToBeValued))
+			{
+				if (!Interpreter.ThingValueDictionary.ContainsKey(thingToBeValued))
+				{
+					return null;
+				}
+				
+				var thingDivisor = Interpreter.ThingValueDictionary[thingToBeValued];
+				finalValue = (int) (finalValue.Value/thingDivisor);
+			}
+
+			return finalValue;
+		}
+
 
 	}
 }

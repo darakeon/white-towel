@@ -32,6 +32,7 @@ namespace WT.FileInterpreter.LineTranslators
 				?? getTranslator<LineTranslatorAlienToCredits>(interpreter, line, order)
 				?? getTranslator<LineTranslatorAskAlienToNumber>(interpreter, line, order)
 				?? getTranslator<LineTranslatorAskAlienToCredits>(interpreter, line, order)
+				?? getTranslator<LineTranslatorAskAlienToThing>(interpreter, line, order)
 				?? new LineTranslatorNoIdea(interpreter, order);
 		}
 
@@ -62,6 +63,7 @@ namespace WT.FileInterpreter.LineTranslators
 			TranslateAlienToCredits = 2,
 			AskAlienToNumber = 3,
 			AskAlienToCredits = 4,
+			AskAlienToThing = 5,
 			NoIdea = Int32.MaxValue,
 		}
 

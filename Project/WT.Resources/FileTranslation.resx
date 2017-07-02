@@ -123,14 +123,20 @@
   <data name="AnswerAlienToNumber" xml:space="preserve">
     <value>{0} is {1}</value>
   </data>
+  <data name="AnswerAlienToThing" xml:space="preserve">
+    <value>{0} is {1} {2}</value>
+  </data>
   <data name="AnswerNoIdea" xml:space="preserve">
     <value>I have no idea what you are talking about</value>
   </data>
   <data name="AskAlienToCredits" xml:space="preserve">
-    <value>^how many Credits is ([\w ]+) \?$</value>
+    <value>^how many Credits is ([\w ]+) ?\?$</value>
   </data>
   <data name="AskAlienToNumber" xml:space="preserve">
-    <value>^how much is ([\w ]+) \?$</value>
+    <value>^how much is ([\w ]+) ?\?$</value>
+  </data>
+  <data name="AskAlienToThing" xml:space="preserve">
+    <value>^how many ([\w ]+) is ([\w ]+) ?\?$</value>
   </data>
   <data name="TranslateAlienToCredits" xml:space="preserve">
     <value>^([\w ]+) is ([\d\.\,]+) Credits$</value>
