@@ -106,20 +106,20 @@ namespace WT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (\w+ )+is (\d+) Credits.
+        /// </summary>
+        public static string TranslateAlienToCredits {
+            get {
+                return ResourceManager.GetString("TranslateAlienToCredits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (\w+) is ([IVXLCDM]).
         /// </summary>
         public static string TranslateAlienToRoman {
             get {
                 return ResourceManager.GetString("TranslateAlienToRoman", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (\w+ )+is (\d+) Credits.
-        /// </summary>
-        public static string TranslateRomanAndAlienToCredits {
-            get {
-                return ResourceManager.GetString("TranslateRomanAndAlienToCredits", resourceCulture);
             }
         }
     }

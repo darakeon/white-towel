@@ -61,6 +61,24 @@ namespace WT.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value &apos;{1}&apos; for &apos;{0}&apos; already stored.
+        /// </summary>
+        public static string AlreadyStoredConversion {
+            get {
+                return ResourceManager.GetString("AlreadyStoredConversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value &apos;{1}&apos; for &apos;{0}&apos; ignored (kept as &apos;{2}&apos;).
+        /// </summary>
+        public static string DuplicatedConversion {
+            get {
+                return ResourceManager.GetString("DuplicatedConversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File does not exist.
         /// </summary>
         public static string NotFound {
