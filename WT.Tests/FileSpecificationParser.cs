@@ -116,6 +116,48 @@ namespace WT.Tests
 
 
 
+		[TestMethod]
+		public void FileWithDuplicateCreditSpecifications()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("towel.txt"
+				, "Silver is 17 Credits"
+				, "Silver is 17 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers("Value '17' for 'Silver' already stored");
+
+			steps.ThenIWillHaveTheseThingsValues(
+				Tuple.Create("Silver", 17m)
+			);
+		}
+
+
+
+		[TestMethod]
+		public void FileWithChangeInCreditSpecifications()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("towel.txt"
+				, "Silver is 17 Credits"
+				, "Silver is 27 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers("Value '27' for 'Silver' ignored (kept as '17')");
+
+			steps.ThenIWillHaveTheseThingsValues(
+				Tuple.Create("Silver", 17m)
+			);
+		}
+
+
+
 
 
 	}
