@@ -89,6 +89,30 @@ namespace WT.Tests
 
 
 
+		[TestMethod]
+		public void FileWithCreditSpecifications()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("towel.txt"
+				, "Silver is 17 Credits"
+				, "Gold is 14450 Credits"
+				, "Iron is 195.5 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers();
+
+			steps.ThenIWillHaveTheseThingsValues(
+				Tuple.Create("Silver", 17m),
+				Tuple.Create("Gold", 14450m),
+				Tuple.Create("Iron", 195.5m)
+			);
+		}
+
+
+
 
 
 	}

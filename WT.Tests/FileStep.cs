@@ -10,7 +10,8 @@ namespace WT.Tests
 	public class FileStep
 	{
 		private IList<String> result;
-		private IDictionary<string, string> conversions;
+		private IDictionary<String, String> conversionDictionary;
+		private IDictionary<String, Decimal> thingValueDictionary;
 
 
 		public void GivenIDontHaveThisFile(String fileName)
@@ -31,7 +32,8 @@ namespace WT.Tests
 			var interpreter = new Interpreter(fileName);
 
 			result = interpreter.Execute();
-			conversions = interpreter.ConversionDictionary;
+			conversionDictionary = interpreter.ConversionDictionary;
+			thingValueDictionary = interpreter.ThingValueDictionary;
 		}
 
 
@@ -50,19 +52,29 @@ namespace WT.Tests
 
 		public void ThenIWillHaveTheseConversions(params Tuple<String, String>[] expectedConversions)
 		{
-			var message = String.Format(TestsErrors.ConversionCountError, expectedConversions.Length, conversions.Count);
-			Assert.AreEqual(expectedConversions.Length, conversions.Count, message);
+			thenIWillHaveThese(conversionDictionary, expectedConversions);
+		}
 
-			for (var a = 0; a < expectedConversions.Length; a++)
+		public void ThenIWillHaveTheseThingsValues(params Tuple<String, Decimal>[] expectedThingsValues)
+		{
+			thenIWillHaveThese(thingValueDictionary, expectedThingsValues);
+		}
+
+		private static void thenIWillHaveThese<T>(IDictionary<String, T> received, Tuple<String, T>[] expected)
+		{
+			var message = String.Format(TestsErrors.ConversionCountError, expected.Length, received.Count);
+			Assert.AreEqual(expected.Length, received.Count, message);
+
+			for (var a = 0; a < expected.Length; a++)
 			{
-				var key = expectedConversions[a].Item1;
-				var value = expectedConversions[a].Item2;
+				var key = expected[a].Item1;
+				var value = expected[a].Item2;
 
 				message = String.Format(TestsErrors.ConversionNotFoundFor, key);
-				Assert.IsTrue(conversions.ContainsKey(key), message);
+				Assert.IsTrue(received.ContainsKey(key), message);
 
-				message = String.Format(TestsErrors.WrongConversionFor, key, value, conversions[key]);
-				Assert.AreEqual(value, conversions[key], message);
+				message = String.Format(TestsErrors.WrongConversionFor, key, value, received[key]);
+				Assert.AreEqual(value, received[key], message);
 			}
 		}
 
