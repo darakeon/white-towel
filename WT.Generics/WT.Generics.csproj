@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DictionaryMessageForRepetitionExtension.cs" />
+    <Compile Include="Instance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RomanConversor.cs" />
   </ItemGroup>
