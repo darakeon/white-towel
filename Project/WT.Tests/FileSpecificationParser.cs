@@ -208,5 +208,42 @@ namespace WT.Tests
 			);
 		}
 
+
+
+		[TestMethod]
+		public void FileWithAlienRomanCreditSpecificationsWithSpace()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("towel.txt"
+				, "glob is I"
+				, "prok is V"
+				, "pish is X"
+				, "tegj is L"
+				, "glob glob Silver is 34 Credits"
+				, "glob prok Gold is 57800 Credits"
+				, "pish pish Iron is 3910 Credits"
+				, "Lollipop Candy is 20 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers();
+
+			steps.ThenIWillHaveTheseConversions(
+				Tuple.Create("glob", "I"),
+				Tuple.Create("prok", "V"),
+				Tuple.Create("pish", "X"),
+				Tuple.Create("tegj", "L")
+			);
+
+			steps.ThenIWillHaveTheseThingValues(
+				Tuple.Create("Silver", 17m),
+				Tuple.Create("Gold", 14450m),
+				Tuple.Create("Iron", 195.5m),
+				Tuple.Create("Lollipop Candy", 20m)
+			);
+		}
+
 	}
 }

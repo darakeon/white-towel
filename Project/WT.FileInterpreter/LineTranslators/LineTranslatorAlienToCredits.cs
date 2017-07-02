@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using WT.Generics;
 using WT.Resources;
@@ -16,24 +17,43 @@ namespace WT.FileInterpreter.LineTranslators
 		{
 			var key = Match.Groups[1].Value.Trim();
 			var value = (Decimal?) Decimal.Parse(Match.Groups[2].Value);
+			String name;
 
-			if (key.Contains(" "))
+			if (!key.Contains(" "))
+			{
+				name = key;
+			}
+			else
 			{
 				var numbers = key.Split(' ');
-				key = numbers.Last();
+				var names = new List<String>();
+
+				for (var n = 0; n < numbers.Length; n++)
+				{
+					if (numbers[n][0].ToString() == numbers[n][0].ToString().ToUpper())
+					{
+						names.Add(numbers[n]);
+						numbers[n] = String.Empty;
+					}
+				}
+
+				name = String.Join(" ", names);
 				var romanDivisor = String.Empty;
 
-				for (var n = 0; n < numbers.Length - 1; n++)
+				foreach (var number in numbers)
 				{
-					if (!Interpreter.ConversionDictionary.ContainsKey(numbers[n]))
+					if (String.IsNullOrEmpty(number))
+						continue;
+
+					if (!Interpreter.ConversionDictionary.ContainsKey(number))
 					{
-						var message = String.Format(Messages.UnknownAlienToRomanConversion, numbers[n]);
+						var message = String.Format(Messages.UnknownAlienToRomanConversion, number);
 
 						Interpreter.AddError(message, Order);
 						return;
 					}
 
-					romanDivisor += Interpreter.ConversionDictionary[numbers[n]];
+					romanDivisor += Interpreter.ConversionDictionary[number];
 				}
 
 				var divisor = RomanConversor.Convert(romanDivisor);
@@ -45,7 +65,7 @@ namespace WT.FileInterpreter.LineTranslators
 					var message = String.Format(Messages.UnknownRomanNumber, romanDivisor);
 					Interpreter.AddError(message, Order);
 				}
-				else
+				else if (divisor.Value != 0)
 				{
 					value /= divisor.Value;
 				}
@@ -53,7 +73,7 @@ namespace WT.FileInterpreter.LineTranslators
 
 			if (value.HasValue)
 			{
-				var message = Interpreter.ThingValueDictionary.HandleKeyValue(key, value.Value);
+				var message = Interpreter.ThingValueDictionary.HandleKeyValue(name, value.Value);
 
 				if (!String.IsNullOrEmpty(message))
 					Interpreter.AddWarning(message, Order);
