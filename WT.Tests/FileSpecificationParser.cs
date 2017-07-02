@@ -5,7 +5,7 @@ using WT.Resources;
 namespace WT.Tests
 {
 	[TestClass]
-	public class FileParser
+	public class FileSpecificationParser
 	{
 		[TestMethod]
 		public void FileEmpty()
