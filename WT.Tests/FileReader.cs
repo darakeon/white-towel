@@ -23,7 +23,7 @@ namespace WT.Tests
 		{
 			var steps = new FileStep();
 
-			steps.GivenIHaveThisFile("towel.txt", "");
+			steps.GivenIHaveThisFile("towel.txt");
 			steps.WhenICallTheInterpreterForFile("towel.txt");
 			steps.ThenIWillHaveTheseAnswers();
 		}
@@ -35,7 +35,7 @@ namespace WT.Tests
 		{
 			var steps = new FileStep();
 
-			steps.GivenIHaveThisFile(@"C:\Temp\purple_towel.txt", "");
+			steps.GivenIHaveThisFile(@"C:\Temp\purple_towel.txt");
 			steps.WhenICallTheInterpreterForFile(@"C:\Temp\purple_towel.txt");
 			steps.ThenIWillHaveTheseAnswers();
 		}

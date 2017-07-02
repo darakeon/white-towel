@@ -18,9 +18,9 @@ namespace WT.Tests
 				File.Delete(fileName);
 		}
 
-		public void GivenIHaveThisFile(String fileName, String fileContent)
+		public void GivenIHaveThisFile(String fileName, params String[] fileContent)
 		{
-			File.WriteAllText(fileName, fileContent);
+			File.WriteAllLines(fileName, fileContent);
 		}
 
 
