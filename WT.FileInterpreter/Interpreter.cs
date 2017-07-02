@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using WT.Resources;
 
 namespace WT.FileInterpreter
@@ -11,6 +12,7 @@ namespace WT.FileInterpreter
 	    private String fileName { get; set; }
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; } 
+		internal IDictionary<String, Decimal> ValueThingDictionary { get; private set; } 
 
 
 
@@ -18,6 +20,7 @@ namespace WT.FileInterpreter
 	    {
 		    this.fileName = fileName;
 			ConversionDictionary = new Dictionary<String, String>();
+			ValueThingDictionary = new Dictionary<String, Decimal>();
         }
 
 
@@ -46,10 +49,25 @@ namespace WT.FileInterpreter
 
 		private String translate(String line)
 		{
+			if (translateAlienToRoman(line))
+				return null;
+
 			return null;
 		}
 
+	    private Boolean translateAlienToRoman(string line)
+	    {
+		    var match = Regex.Match(line, FileTranslation.TranslateAlienToRoman);
 
+		    if (!match.Success)
+				return false;
 
-	}
+		    var key = match.Groups[1].Value;
+		    var value = match.Groups[2].Value;
+
+		    ConversionDictionary.Add(key, value);
+
+		    return true;
+	    }
+    }
 }
