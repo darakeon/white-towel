@@ -61,6 +61,10 @@
       <Project>{9d2b84df-63f0-4712-b00e-5192976b46bc}</Project>
       <Name>WT.FileInterpreter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WT.Generics\WT.Generics.csproj">
+      <Project>{227fbc46-37a1-4853-ad20-66097378dc9b}</Project>
+      <Name>WT.Generics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WT.Resources\WT.Resources.csproj">
       <Project>{7d713cd2-973e-402d-b3b4-b3662ce86af8}</Project>
       <Name>WT.Resources</Name>

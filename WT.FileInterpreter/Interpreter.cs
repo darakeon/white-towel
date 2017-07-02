@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using WT.Generics;
 using WT.Resources;
 
 namespace WT.FileInterpreter
@@ -75,7 +76,10 @@ namespace WT.FileInterpreter
 			var key = match.Groups[1].Value;
 			var value = match.Groups[2].Value;
 
-			addIfNewKey(ConversionDictionary, key, value);
+			var message = ConversionDictionary.HandleKeyValue(key, value);
+
+			if (!String.IsNullOrEmpty(message))
+				messages.Add(message);
 
 			return true;
 		}
@@ -90,7 +94,7 @@ namespace WT.FileInterpreter
 				return false;
 
 			var key = match.Groups[1].Value.Trim();
-			var value = (Decimal?)Decimal.Parse(match.Groups[2].Value);
+			var value = (Decimal?) Decimal.Parse(match.Groups[2].Value);
 
 			if (key.Contains(" "))
 			{
@@ -128,37 +132,14 @@ namespace WT.FileInterpreter
 
 			if (value.HasValue)
 			{
-				addIfNewKey(ThingValueDictionary, key, value.Value);
+				var message = ThingValueDictionary.HandleKeyValue(key, value.Value);
+
+				if (!String.IsNullOrEmpty(message))
+					messages.Add(message);
 			}
 
 			return true;
 		}
-
-
-
-		private void addIfNewKey<T>(IDictionary<String, T> dic, String key, T value)
-		{
-			if (dic.ContainsKey(key))
-			{
-				repeatedKey(key, value, dic[key]);
-			}
-			else
-			{
-				dic.Add(key, value);
-			}
-		}
-
-		private void repeatedKey(string key, object ignoredValue, object storedValue)
-		{
-			var format = ignoredValue.Equals(storedValue)
-				? Messages.AlreadyStoredConversion
-				: Messages.DuplicatedConversion;
-
-			var message = String.Format(format, key, ignoredValue, storedValue);
-			messages.Add(message);
-		}
-
-
 
 	}
 }

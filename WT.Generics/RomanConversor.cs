@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WT.FileInterpreter
+namespace WT.Generics
 {
 	public class RomanConversor
 	{
@@ -15,8 +15,7 @@ namespace WT.FileInterpreter
 		private readonly Int32? arabic;
 		private List<Int32?> numbers = new List<Int32?>();
 
-		private Int32 last { get { return numbers.Count - 1; } }
-
+		private Int32 last => numbers.Count - 1;
 
 
 		public static Int32? Convert(String roman)

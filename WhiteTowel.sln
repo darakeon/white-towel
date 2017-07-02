@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WT.Resources", "WT.Resource
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WT.Tests", "WT.Tests\WT.Tests.csproj", "{72291894-236C-4E1C-8091-7CF071CE2892}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WT.Generics", "WT.Generics\WT.Generics.csproj", "{227FBC46-37A1-4853-AD20-66097378DC9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{72291894-236C-4E1C-8091-7CF071CE2892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72291894-236C-4E1C-8091-7CF071CE2892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72291894-236C-4E1C-8091-7CF071CE2892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{227FBC46-37A1-4853-AD20-66097378DC9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{227FBC46-37A1-4853-AD20-66097378DC9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{227FBC46-37A1-4853-AD20-66097378DC9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{227FBC46-37A1-4853-AD20-66097378DC9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

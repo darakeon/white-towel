@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D2B84DF-63F0-4712-B00E-5192976B46BC}</ProjectGuid>
+    <ProjectGuid>{227FBC46-37A1-4853-AD20-66097378DC9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WT.FileInterpreter</RootNamespace>
-    <AssemblyName>WT.FileInterpreter</AssemblyName>
+    <RootNamespace>WT.Generics</RootNamespace>
+    <AssemblyName>WT.Generics</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interpreter.cs" />
+    <Compile Include="DictionaryMessageForRepetitionExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomanConversor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WT.Generics\WT.Generics.csproj">
-      <Project>{227fbc46-37a1-4853-ad20-66097378dc9b}</Project>
-      <Name>WT.Generics</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WT.Resources\WT.Resources.csproj">
       <Project>{7d713cd2-973e-402d-b3b4-b3662ce86af8}</Project>
       <Name>WT.Resources</Name>
