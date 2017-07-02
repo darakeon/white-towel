@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WT.Resources;
 
 namespace WT.Tests
 {
@@ -13,7 +12,7 @@ namespace WT.Tests
 
 			steps.GivenIDontHaveThisFile("towel.txt");
 			steps.WhenICallTheInterpreterForFile("towel.txt");
-			steps.ThenIWillHaveTheseAnswers(Messages.NotFound);
+			steps.ThenIWillHaveTheseAnswers("File does not exist");
 		}
 
 

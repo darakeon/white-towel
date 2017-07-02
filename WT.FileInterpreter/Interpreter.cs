@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using WT.Resources;
@@ -12,7 +13,7 @@ namespace WT.FileInterpreter
 		private IList<String> messages { get; set; }
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; }
-		internal IDictionary<String, Decimal> ValueThingDictionary { get; private set; }
+		internal IDictionary<String, Decimal> ThingValueDictionary { get; private set; }
 
 
 
@@ -22,7 +23,7 @@ namespace WT.FileInterpreter
 			messages = new List<String>();
 
 			ConversionDictionary = new Dictionary<String, String>();
-			ValueThingDictionary = new Dictionary<String, Decimal>();
+			ThingValueDictionary = new Dictionary<String, Decimal>();
 		}
 
 
@@ -56,6 +57,9 @@ namespace WT.FileInterpreter
 			if (translateAlienToRoman(line))
 				return;
 
+			if (translateAlienToCredits(line))
+				return;
+
 		}
 
 
@@ -71,6 +75,23 @@ namespace WT.FileInterpreter
 			var value = match.Groups[2].Value;
 
 			addIfNewKey(ConversionDictionary, key, value);
+
+			return true;
+		}
+
+
+
+		private Boolean translateAlienToCredits(String line)
+		{
+			var match = Regex.Match(line, FileTranslation.TranslateAlienToCredits);
+
+			if (!match.Success)
+				return false;
+
+			var key = match.Groups[1].Value.Trim();
+			var value = Decimal.Parse(match.Groups[2].Value);
+			
+			addIfNewKey(ThingValueDictionary, key, value);
 
 			return true;
 		}

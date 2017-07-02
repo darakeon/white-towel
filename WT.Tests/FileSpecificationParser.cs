@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WT.Resources;
 
 namespace WT.Tests
 {
 	[TestClass]
 	public class FileSpecificationParser
 	{
+		public FileSpecificationParser()
+		{
+			CultureInfo.DefaultThreadCurrentCulture = CultureInfo.GetCultureInfo("en-US");
+		}
+
 		[TestMethod]
 		public void FileEmpty()
 		{
@@ -57,8 +62,7 @@ namespace WT.Tests
 
 			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 
-			var answer = String.Format(Messages.AlreadyStoredConversion, "glob", "I");
-			steps.ThenIWillHaveTheseAnswers(answer);
+			steps.ThenIWillHaveTheseAnswers(@"Value 'I' for 'glob' already stored");
 
 			steps.ThenIWillHaveTheseConversions(
 				Tuple.Create("glob", "I")
@@ -79,8 +83,7 @@ namespace WT.Tests
 
 			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 
-			var answer = String.Format(Messages.DuplicatedConversion, "glob", "L", "I");
-			steps.ThenIWillHaveTheseAnswers(answer);
+			steps.ThenIWillHaveTheseAnswers(@"Value 'L' for 'glob' ignored (kept as 'I')");
 
 			steps.ThenIWillHaveTheseConversions(
 				Tuple.Create("glob", "I")

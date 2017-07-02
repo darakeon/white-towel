@@ -133,7 +133,7 @@
     <value>how much is ( \w+)+ ?\?</value>
   </data>
   <data name="TranslateAlienToCredits" xml:space="preserve">
-    <value>(\w+ )+is (\d+) Credits</value>
+    <value>(\w+ )+is ([\d\.\,]+) Credits</value>
   </data>
   <data name="TranslateAlienToRoman" xml:space="preserve">
     <value>(\w+) is ([IVXLCDM])</value>
