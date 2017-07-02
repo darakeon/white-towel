@@ -7,8 +7,8 @@ namespace WT.FileInterpreter.LineTranslators
 {
 	public class LineTranslatorAlienToCredits : BaseLineTranslator
 	{
-		public LineTranslatorAlienToCredits(Interpreter interpreter) 
-			: base(interpreter, TranslatorType.TranslateAlienToCredits) { }
+		public LineTranslatorAlienToCredits(Interpreter interpreter, Int32 order) 
+			: base(interpreter, TranslatorType.TranslateAlienToCredits, order) { }
 
 
 
@@ -29,7 +29,7 @@ namespace WT.FileInterpreter.LineTranslators
 					{
 						var message = String.Format(Messages.UnknownAlienToRomanConversion, numbers[n]);
 
-						Interpreter.AddError(message);
+						Interpreter.AddError(message, Order);
 						return;
 					}
 
@@ -43,7 +43,7 @@ namespace WT.FileInterpreter.LineTranslators
 					value = null;
 
 					var message = String.Format(Messages.UnknownRomanNumber, romanDivisor);
-					Interpreter.AddError(message);
+					Interpreter.AddError(message, Order);
 				}
 				else
 				{
@@ -56,7 +56,7 @@ namespace WT.FileInterpreter.LineTranslators
 				var message = Interpreter.ThingValueDictionary.HandleKeyValue(key, value.Value);
 
 				if (!String.IsNullOrEmpty(message))
-					Interpreter.AddWarning(message);
+					Interpreter.AddWarning(message, Order);
 			}
 		}
 

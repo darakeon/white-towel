@@ -8,8 +8,8 @@ namespace WT.FileInterpreter.LineTranslators
 	{
 		private readonly string rightAnswer;
 
-		protected BaseLineTranslatorAsk(Interpreter interpreter, TranslatorType type, String rightAnswer)
-			: base(interpreter, type)
+		protected BaseLineTranslatorAsk(Interpreter interpreter, TranslatorType type, String rightAnswer, Int32 order)
+			: base(interpreter, type, order)
 		{
 			this.rightAnswer = rightAnswer;
 		}
@@ -35,7 +35,7 @@ namespace WT.FileInterpreter.LineTranslators
 				else
 				{
 					var message = String.Format(Messages.UnknownAlienNumberOrThing, part);
-					Interpreter.AddError(message);
+					Interpreter.AddError(message, Order);
 					return;
 				}
 			}
@@ -45,12 +45,12 @@ namespace WT.FileInterpreter.LineTranslators
 			if (arabic.HasValue)
 			{
 				var message = String.Format(rightAnswer, value, (int) (arabic*thing));
-				Interpreter.AddInfo(message);
+				Interpreter.AddInfo(message, Order);
 			}
 			else
 			{
 				var message = String.Format(Messages.UnknownRomanNumber, roman);
-				Interpreter.AddError(message);
+				Interpreter.AddError(message, Order);
 			}
 		}
 

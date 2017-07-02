@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using WT.FileInterpreter.LineTranslators;
 using WT.Resources;
 
@@ -9,7 +10,7 @@ namespace WT.FileInterpreter
 	public class Interpreter
 	{
 		private String fileName { get; }
-		private IList<Message> messages { get; }
+		private IList<Message> messages { get; set; }
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; }
 		internal IDictionary<String, Decimal> ThingValueDictionary { get; private set; }
@@ -32,7 +33,7 @@ namespace WT.FileInterpreter
 		{
 			if (!File.Exists(fileName))
 			{
-				AddError(Messages.FileNotFound);
+				AddError(Messages.FileNotFound, 0);
 				return messages;
 			}
 
@@ -50,34 +51,46 @@ namespace WT.FileInterpreter
 			catch (IOException e)
 			{
 				var message = String.Format(Messages.FileWithProblem, e.Message);
-				AddError(message);
+				AddError(message, 0);
 				return messages;
 			}
 
-			foreach (var line in lines)
+			var translators = new List<BaseLineTranslator>();
+
+			for (var l = 0; l < lines.Length; l++)
 			{
-				var translator = BaseLineTranslator.GetTranslator(this, line);
+				var line = lines[l];
+				var translator = BaseLineTranslator.GetTranslator(this, line, l);
+				translators.Add(translator);
+			}
+
+			translators = translators.OrderBy(t => t.Type).ToList();
+
+			foreach (var translator in translators)
+			{
 				translator?.Translate();
 			}
+
+			messages = messages.OrderBy(m => m.Order).ToList();
 
 			return messages;
 		}
 
 
 
-		internal void AddInfo(String text)
+		internal void AddInfo(String text, Int32 order)
 		{
-			messages.Add(Message.Info(text));
+			messages.Add(Message.Info(text, order));
 		}
 
-		internal void AddWarning(String text)
+		internal void AddWarning(String text, Int32 order)
 		{
-			messages.Add(Message.Warning(text));
+			messages.Add(Message.Warning(text, order));
 		}
 
-		internal void AddError(String text)
+		internal void AddError(String text, Int32 order)
 		{
-			messages.Add(Message.Error(text));
+			messages.Add(Message.Error(text, order));
 		}
 
 	}

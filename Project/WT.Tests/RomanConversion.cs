@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WT.FileInterpreter;
 using WT.Generics;
 
 namespace WT.Tests

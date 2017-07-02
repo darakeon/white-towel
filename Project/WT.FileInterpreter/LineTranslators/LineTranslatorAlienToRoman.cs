@@ -5,8 +5,8 @@ namespace WT.FileInterpreter.LineTranslators
 {
 	public class LineTranslatorAlienToRoman : BaseLineTranslator
 	{
-		public LineTranslatorAlienToRoman(Interpreter interpreter) 
-			: base(interpreter, TranslatorType.TranslateAlienToRoman) { }
+		public LineTranslatorAlienToRoman(Interpreter interpreter, Int32 order) 
+			: base(interpreter, TranslatorType.TranslateAlienToRoman, order) { }
 
 
 		public override void Translate()
@@ -17,7 +17,7 @@ namespace WT.FileInterpreter.LineTranslators
 			var message = Interpreter.ConversionDictionary.HandleKeyValue(key, value);
 
 			if (!String.IsNullOrEmpty(message))
-				Interpreter.AddWarning(message);
+				Interpreter.AddWarning(message, Order);
 		}
 
 	}
