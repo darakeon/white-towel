@@ -9,6 +9,8 @@ namespace WT.Presentation
 	{
 		private const String defaultFilename = "towel.txt";
 		private const String rightAnswer = "42";
+		private const String startFileAnswer = "================================================ start";
+		private const String endFileAnswer = "================================================== end";
 
 		public static void Main(string[] args)
 		{
@@ -29,9 +31,11 @@ namespace WT.Presentation
 				var interpreter = new Interpreter(filename);
 				var result = interpreter.Execute();
 
+				Console.WriteLine(startFileAnswer);
 				result.ToList().ForEach(Console.WriteLine);
+				Console.WriteLine(endFileAnswer);
 
-
+				Console.WriteLine();
 				Console.WriteLine(Messages.ProgramTerminateOrRunAgain);
 				answer = Console.ReadLine();
 
