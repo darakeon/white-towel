@@ -43,7 +43,7 @@ namespace WT.FileInterpreter.LineTranslators
 			var arabic = RomanConversor.Convert(roman);
 
 			var successMessage = arabic.HasValue
-				? String.Format(rightAnswer, value, arabic * thing)
+				? String.Format(rightAnswer, value, (int)(arabic * thing))
 				: String.Format(Messages.UnknownRomanNumber, roman);
 
 			Interpreter.AddMessage(successMessage);
