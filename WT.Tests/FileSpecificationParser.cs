@@ -103,7 +103,7 @@ namespace WT.Tests
 
 			steps.ThenIWillHaveTheseAnswers();
 
-			steps.ThenIWillHaveTheseThingsValues(
+			steps.ThenIWillHaveTheseThingValues(
 				Tuple.Create("Silver", 17m),
 				Tuple.Create("Gold", 14450m),
 				Tuple.Create("Iron", 195.5m)
@@ -124,7 +124,7 @@ namespace WT.Tests
 
 			steps.ThenIWillHaveTheseAnswers("Value '17' for 'Silver' already stored");
 
-			steps.ThenIWillHaveTheseThingsValues(
+			steps.ThenIWillHaveTheseThingValues(
 				Tuple.Create("Silver", 17m)
 			);
 		}
@@ -143,7 +143,7 @@ namespace WT.Tests
 
 			steps.ThenIWillHaveTheseAnswers("Value '27' for 'Silver' ignored (kept as '17')");
 
-			steps.ThenIWillHaveTheseThingsValues(
+			steps.ThenIWillHaveTheseThingValues(
 				Tuple.Create("Silver", 17m)
 			);
 		}
@@ -201,7 +201,7 @@ namespace WT.Tests
 				Tuple.Create("tegj", "L")
 			);
 
-			steps.ThenIWillHaveTheseThingsValues(
+			steps.ThenIWillHaveTheseThingValues(
 				Tuple.Create("Silver", 17m),
 				Tuple.Create("Gold", 14450m),
 				Tuple.Create("Iron", 195.5m)

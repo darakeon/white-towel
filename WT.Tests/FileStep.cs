@@ -50,14 +50,16 @@ namespace WT.Tests
 			}
 		}
 
+
+
 		public void ThenIWillHaveTheseConversions(params Tuple<String, String>[] expectedConversions)
 		{
 			thenIWillHaveThese(conversionDictionary, expectedConversions);
 		}
 
-		public void ThenIWillHaveTheseThingsValues(params Tuple<String, Decimal>[] expectedThingsValues)
+		public void ThenIWillHaveTheseThingValues(params Tuple<String, Decimal>[] expectedThingValues)
 		{
-			thenIWillHaveThese(thingValueDictionary, expectedThingsValues);
+			thenIWillHaveThese(thingValueDictionary, expectedThingValues);
 		}
 
 		private static void thenIWillHaveThese<T>(IDictionary<String, T> received, Tuple<String, T>[] expected)
@@ -77,6 +79,17 @@ namespace WT.Tests
 				Assert.AreEqual(value, received[key], message);
 			}
 		}
+		
+		public void ThenIWillHaveNoConversions()
+		{
+			ThenIWillHaveTheseConversions();
+		}
+
+		public void ThenIWillHaveNoThingValues()
+		{
+			ThenIWillHaveTheseThingValues();
+		}
+
 
 
 	}
