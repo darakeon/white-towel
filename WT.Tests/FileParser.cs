@@ -24,7 +24,7 @@ namespace WT.Tests
 			var steps = new FileStep();
 
 			steps.GivenIHaveThisFile("towel.txt", "glob is I", "prok is V", "pish is X", "tegj is L");
-			steps.WhenICallTheInterpreterForFile(@"C:\Temp\purple_towel.txt");
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 			steps.ThenIWillHaveTheseAnswers();
 			
 			steps.ThenIWillHaveTheseConversions(
