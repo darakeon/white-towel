@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using WT.Resources;
 
@@ -14,6 +15,7 @@ namespace WT.FileInterpreter
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; }
 		internal IDictionary<String, Decimal> ThingValueDictionary { get; private set; }
+
 
 
 
@@ -89,9 +91,46 @@ namespace WT.FileInterpreter
 				return false;
 
 			var key = match.Groups[1].Value.Trim();
-			var value = Decimal.Parse(match.Groups[2].Value);
-			
-			addIfNewKey(ThingValueDictionary, key, value);
+			var value = (Decimal?)Decimal.Parse(match.Groups[2].Value);
+
+			if (key.Contains(" "))
+			{
+				var numbers = key.Split(' ');
+				key = numbers.Last();
+				var romanDivisor = String.Empty;
+
+				for (var n = 0; n < numbers.Length - 1; n++)
+				{
+					if (!ConversionDictionary.ContainsKey(numbers[n]))
+					{
+						var message = String.Format(Messages.UnknownAlienToRomanConversion, numbers[n]);
+
+						messages.Add(message);
+						return true;
+					}
+
+					romanDivisor += ConversionDictionary[numbers[n]];
+				}
+
+				var divisor = RomanConversor.Convert(romanDivisor);
+
+				if (divisor == null)
+				{
+					value = null;
+
+					var message = String.Format(Messages.UnknownAlienToRomanConversion, romanDivisor);
+					messages.Add(message);
+				}
+				else
+				{
+					value /= divisor.Value;
+				}
+			}
+
+			if (value.HasValue)
+			{
+				addIfNewKey(ThingValueDictionary, key, value.Value);
+			}
 
 			return true;
 		}

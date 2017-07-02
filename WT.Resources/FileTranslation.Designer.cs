@@ -106,7 +106,7 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^(\w+ )+is ([\d\.\,]+) Credits$.
+        ///   Looks up a localized string similar to ^([\w ]+) is ([\d\.\,]+) Credits$.
         /// </summary>
         public static string TranslateAlienToCredits {
             get {
