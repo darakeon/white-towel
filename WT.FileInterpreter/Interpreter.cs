@@ -10,10 +10,15 @@ namespace WT.FileInterpreter
     {
 	    private String fileName { get; set; }
 
+		internal IDictionary<String, String> ConversionDictionary { get; private set; } 
+
+
+
 	    public Interpreter(String fileName)
 	    {
 		    this.fileName = fileName;
-	    }
+			ConversionDictionary = new Dictionary<String, String>();
+        }
 
 
 

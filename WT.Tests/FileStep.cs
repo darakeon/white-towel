@@ -10,6 +10,7 @@ namespace WT.Tests
 	public class FileStep
 	{
 		private IList<String> result;
+		private IDictionary<string, string> conversions;
 
 
 		public void GivenIDontHaveThisFile(String fileName)
@@ -30,6 +31,7 @@ namespace WT.Tests
 			var interpreter = new Interpreter(fileName);
 
 			result = interpreter.Execute();
+			conversions = interpreter.ConversionDictionary;
 		}
 
 
@@ -41,8 +43,26 @@ namespace WT.Tests
 
 			for (var a = 0; a < answers.Length; a++)
 			{
-				var messageLine = String.Format(TestsErrors.AnswerLineError, a, answers[a], result[a]);
-                Assert.AreEqual(answers[a], result[a], messageLine);
+				message = String.Format(TestsErrors.AnswerLineError, a, answers[a], result[a]);
+				Assert.AreEqual(answers[a], result[a], message);
+			}
+		}
+
+		public void ThenIWillHaveTheseConversions(params Tuple<String, String>[] expectedConversions)
+		{
+			var message = String.Format(TestsErrors.ConversionCountError, expectedConversions.Length, conversions.Count);
+			Assert.AreEqual(expectedConversions.Length, conversions.Count, message);
+
+			for (var a = 0; a < expectedConversions.Length; a++)
+			{
+				var key = expectedConversions[a].Item1;
+				var value = expectedConversions[a].Item2;
+
+				message = String.Format(TestsErrors.ConversionNotFoundFor, key);
+				Assert.IsTrue(conversions.ContainsKey(key), message);
+
+				message = String.Format(TestsErrors.WrongConversionFor, key, value, conversions[key]);
+				Assert.AreEqual(value, conversions[key], message);
 			}
 		}
 

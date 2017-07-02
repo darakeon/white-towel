@@ -123,4 +123,13 @@
   <data name="AnswerLineError" xml:space="preserve">
     <value>Line {0} wrong: expected '{1}', received '{2}'</value>
   </data>
+  <data name="ConversionCountError" xml:space="preserve">
+    <value>Wrong number of found conversions: expected '{0}', received '{1}'</value>
+  </data>
+  <data name="ConversionNotFoundFor" xml:space="preserve">
+    <value>Conversion not found for key '{0}'</value>
+  </data>
+  <data name="WrongConversionFor" xml:space="preserve">
+    <value>Wrong conversion for key '{0}': expected '{1}', received '{2}'</value>
+  </data>
 </root>

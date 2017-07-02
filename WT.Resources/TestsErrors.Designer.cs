@@ -77,5 +77,32 @@ namespace WT.Resources {
                 return ResourceManager.GetString("AnswerLineError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong number of found conversions: expected &apos;{0}&apos;, received &apos;{1}&apos;.
+        /// </summary>
+        public static string ConversionCountError {
+            get {
+                return ResourceManager.GetString("ConversionCountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion not found for key &apos;{0}&apos;.
+        /// </summary>
+        public static string ConversionNotFoundFor {
+            get {
+                return ResourceManager.GetString("ConversionNotFoundFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong conversion for key &apos;{0}&apos;: expected &apos;{1}&apos;, received &apos;{2}&apos;.
+        /// </summary>
+        public static string WrongConversionFor {
+            get {
+                return ResourceManager.GetString("WrongConversionFor", resourceCulture);
+            }
+        }
     }
 }
