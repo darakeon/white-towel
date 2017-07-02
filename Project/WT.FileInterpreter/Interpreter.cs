@@ -32,7 +32,8 @@ namespace WT.FileInterpreter
 		{
 			if (!File.Exists(fileName))
 			{
-				return new List<Message> { Message.Error(Messages.NotFound) };
+				AddError(Messages.FileNotFound);
+				return messages;
 			}
 
 			return translate();
@@ -40,7 +41,18 @@ namespace WT.FileInterpreter
 
 		private IList<Message> translate()
 		{
-			var lines = File.ReadAllLines(fileName);
+			String[] lines;
+
+			try
+			{
+				lines = File.ReadAllLines(fileName);
+			}
+			catch (IOException e)
+			{
+				var message = String.Format(Messages.FileWithProblem, e.Message);
+				AddError(message);
+				return messages;
+			}
 
 			foreach (var line in lines)
 			{

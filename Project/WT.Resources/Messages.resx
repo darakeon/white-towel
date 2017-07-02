@@ -123,8 +123,11 @@
   <data name="DuplicatedConversion" xml:space="preserve">
     <value>Value '{1}' for '{0}' ignored (kept as '{2}')</value>
   </data>
-  <data name="NotFound" xml:space="preserve">
+  <data name="FileNotFound" xml:space="preserve">
     <value>File does not exist</value>
+  </data>
+  <data name="FileWithProblem" xml:space="preserve">
+    <value>File with problem: {0}</value>
   </data>
   <data name="ProgramInitial" xml:space="preserve">
     <value>Write the file path and name or just press enter if your file is in same path as the program and is called '{0}':</value>

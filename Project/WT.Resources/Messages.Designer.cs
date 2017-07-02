@@ -81,9 +81,18 @@ namespace WT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to File does not exist.
         /// </summary>
-        public static string NotFound {
+        public static string FileNotFound {
             get {
-                return ResourceManager.GetString("NotFound", resourceCulture);
+                return ResourceManager.GetString("FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File with problem: {0}.
+        /// </summary>
+        public static string FileWithProblem {
+            get {
+                return ResourceManager.GetString("FileWithProblem", resourceCulture);
             }
         }
         
