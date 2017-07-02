@@ -104,5 +104,14 @@ namespace WT.Resources {
                 return ResourceManager.GetString("ProgramTerminateOrRunAgain", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown alien to roman conversion: {0}.
+        /// </summary>
+        public static string UnknownAlienToRomanConversion {
+            get {
+                return ResourceManager.GetString("UnknownAlienToRomanConversion", resourceCulture);
+            }
+        }
     }
 }

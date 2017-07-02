@@ -54,6 +54,7 @@
     <Compile Include="FileStep.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomanConversion.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WT.FileInterpreter\WT.FileInterpreter.csproj">

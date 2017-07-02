@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Interpreter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RomanConversor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WT.Resources\WT.Resources.csproj">
