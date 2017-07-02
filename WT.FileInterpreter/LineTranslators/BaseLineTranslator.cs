@@ -17,31 +17,9 @@ namespace WT.FileInterpreter.LineTranslators
 		protected Match Match { get; set; }
 		public TranslatorType Type { get; private set; }
 
-
-
-		private Boolean isMatch(String line)
-		{
-			var pattern = FileTranslation.ResourceManager.GetString(Type.ToString());
-
-			if (pattern == null)
-				return false;
-
-			Match = Regex.Match(line, pattern);
-
-			return Match.Success;
-		}
+		
 
 		public abstract void Translate();
-
-
-
-		public enum TranslatorType
-		{
-			AskAlienToCredits,
-			AskAlienToNumber,
-			TranslateAlienToCredits,
-			TranslateAlienToRoman,
-		}
 
 
 
@@ -56,6 +34,28 @@ namespace WT.FileInterpreter.LineTranslators
 		{
 			var translator = Instance.Create<T>(interpreter);
 			return translator.isMatch(line) ? translator : null;
+		}
+
+		private Boolean isMatch(String line)
+		{
+			var pattern = FileTranslation.ResourceManager.GetString(Type.ToString());
+
+			if (pattern == null)
+				return false;
+
+			Match = Regex.Match(line, pattern);
+
+			return Match.Success;
+		}
+
+
+
+		public enum TranslatorType
+		{
+			AskAlienToCredits,
+			AskAlienToNumber,
+			TranslateAlienToCredits,
+			TranslateAlienToRoman,
 		}
 
 
