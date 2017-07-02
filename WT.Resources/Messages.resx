@@ -133,6 +133,6 @@
     <value>To run again, gave the answer to life the universe and everything:</value>
   </data>
   <data name="UnknownAlienToRomanConversion" xml:space="preserve">
-    <value>Unknown alien to roman conversion: {0}</value>
+    <value>Unknown alien to roman conversion: '{0}'</value>
   </data>
 </root>

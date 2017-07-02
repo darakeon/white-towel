@@ -151,6 +151,31 @@ namespace WT.Tests
 
 
 		[TestMethod]
+		public void FileWithWrongAlienRomanCreditSpecifications()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("towel.txt"
+				, "glob is I"
+				, "tegj is L"
+				, "glob tegj Silver is 34 Credits"
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"towel.txt");
+
+			steps.ThenIWillHaveTheseAnswers("Unknown alien to roman conversion: 'IL'");
+
+			steps.ThenIWillHaveTheseConversions(
+				Tuple.Create("glob", "I"),
+				Tuple.Create("tegj", "L")
+			);
+
+			steps.ThenIWillHaveNoThingValues();
+		}
+
+
+
+		[TestMethod]
 		public void FileWithAlienRomanCreditSpecifications()
 		{
 			var steps = new FileStep();

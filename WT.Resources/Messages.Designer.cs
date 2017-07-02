@@ -106,7 +106,7 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown alien to roman conversion: {0}.
+        ///   Looks up a localized string similar to Unknown alien to roman conversion: &apos;{0}&apos;.
         /// </summary>
         public static string UnknownAlienToRomanConversion {
             get {
