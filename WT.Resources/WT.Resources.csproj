@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FileTranslation.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>FileTranslation.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Messages.resx">

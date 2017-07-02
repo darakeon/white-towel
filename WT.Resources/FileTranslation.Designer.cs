@@ -22,7 +22,7 @@ namespace WT.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class FileTranslation {
+    public class FileTranslation {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WT.Resources {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WT.Resources.FileTranslation", typeof(FileTranslation).Assembly);
@@ -51,7 +51,7 @@ namespace WT.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,9 @@ namespace WT.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (\w+) is [IVXLCDM].
-        /// </summary>
-        internal static string AlienToRoman {
-            get {
-                return ResourceManager.GetString("AlienToRoman", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} is {1} Credits.
         /// </summary>
-        internal static string AnswerAlienToCredits {
+        public static string AnswerAlienToCredits {
             get {
                 return ResourceManager.GetString("AnswerAlienToCredits", resourceCulture);
             }
@@ -81,7 +72,7 @@ namespace WT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to {0} is {1}.
         /// </summary>
-        internal static string AnswerAlienToNumber {
+        public static string AnswerAlienToNumber {
             get {
                 return ResourceManager.GetString("AnswerAlienToNumber", resourceCulture);
             }
@@ -90,7 +81,7 @@ namespace WT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to I have no idea what you are talking about.
         /// </summary>
-        internal static string AnswerNoIdea {
+        public static string AnswerNoIdea {
             get {
                 return ResourceManager.GetString("AnswerNoIdea", resourceCulture);
             }
@@ -99,7 +90,7 @@ namespace WT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to how many Credits is ((\w+ )+\?.
         /// </summary>
-        internal static string AskAlienToCredits {
+        public static string AskAlienToCredits {
             get {
                 return ResourceManager.GetString("AskAlienToCredits", resourceCulture);
             }
@@ -108,18 +99,27 @@ namespace WT.Resources {
         /// <summary>
         ///   Looks up a localized string similar to how much is ( \w+)+ ?\?.
         /// </summary>
-        internal static string AskAlienToNumber {
+        public static string AskAlienToNumber {
             get {
                 return ResourceManager.GetString("AskAlienToNumber", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (\w+) is ([IVXLCDM]).
+        /// </summary>
+        public static string TranslateAlienToRoman {
+            get {
+                return ResourceManager.GetString("TranslateAlienToRoman", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (\w+ )+is (\d+) Credits.
         /// </summary>
-        internal static string RomanAndAlienToCredits {
+        public static string TranslateRomanAndAlienToCredits {
             get {
-                return ResourceManager.GetString("RomanAndAlienToCredits", resourceCulture);
+                return ResourceManager.GetString("TranslateRomanAndAlienToCredits", resourceCulture);
             }
         }
     }

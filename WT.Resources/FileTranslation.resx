@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AlienToRoman" xml:space="preserve">
-    <value>(\w+) is [IVXLCDM]</value>
-  </data>
   <data name="AnswerAlienToCredits" xml:space="preserve">
     <value>{0} is {1} Credits</value>
   </data>
@@ -135,7 +132,10 @@
   <data name="AskAlienToNumber" xml:space="preserve">
     <value>how much is ( \w+)+ ?\?</value>
   </data>
-  <data name="RomanAndAlienToCredits" xml:space="preserve">
+  <data name="TranslateAlienToRoman" xml:space="preserve">
+    <value>(\w+) is ([IVXLCDM])</value>
+  </data>
+  <data name="TranslateRomanAndAlienToCredits" xml:space="preserve">
     <value>(\w+ )+is (\d+) Credits</value>
   </data>
 </root>
