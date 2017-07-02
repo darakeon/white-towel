@@ -35,18 +35,24 @@ namespace WT.FileInterpreter.LineTranslators
 				else
 				{
 					var message = String.Format(Messages.UnknownAlienNumberOrThing, part);
-					Interpreter.AddMessage(message);
+					Interpreter.AddError(message);
 					return;
 				}
 			}
 
 			var arabic = RomanConversor.Convert(roman);
 
-			var successMessage = arabic.HasValue
-				? String.Format(rightAnswer, value, (int)(arabic * thing))
-				: String.Format(Messages.UnknownRomanNumber, roman);
-
-			Interpreter.AddMessage(successMessage);
+			if (arabic.HasValue)
+			{
+				var message = String.Format(rightAnswer, value, (int) (arabic*thing));
+				Interpreter.AddInfo(message);
+			}
+			else
+			{
+				var message = String.Format(Messages.UnknownRomanNumber, roman);
+				Interpreter.AddError(message);
+			}
 		}
+
 	}
 }

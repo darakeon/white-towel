@@ -17,7 +17,7 @@ namespace WT.FileInterpreter.LineTranslators
 			var message = Interpreter.ConversionDictionary.HandleKeyValue(key, value);
 
 			if (!String.IsNullOrEmpty(message))
-				Interpreter.AddMessage(message);
+				Interpreter.AddWarning(message);
 		}
 
 	}

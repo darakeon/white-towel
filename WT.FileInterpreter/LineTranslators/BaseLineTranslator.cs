@@ -32,7 +32,7 @@ namespace WT.FileInterpreter.LineTranslators
 				?? getTranslator<LineTranslatorAskAlienToCredits>(interpreter, line);
 
 			if (translator == null)
-				interpreter.AddMessage(FileTranslation.AnswerNoIdea);
+				interpreter.AddError(FileTranslation.AnswerNoIdea);
 
 			return translator;
 		}

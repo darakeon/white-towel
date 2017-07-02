@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using WT.FileInterpreter;
 using WT.Resources;
 
@@ -15,7 +14,7 @@ namespace WT.Presentation
 		public static void Main(string[] args)
 		{
 			String answer;
-			Console.ForegroundColor = ConsoleColor.Green;
+			Console.ForegroundColor = ConsoleColor.White;
 
 			do
 			{
@@ -31,9 +30,16 @@ namespace WT.Presentation
 				var interpreter = new Interpreter(filename);
 				var result = interpreter.Execute();
 
+
 				Console.WriteLine(startFileAnswer);
-				result.ToList().ForEach(Console.WriteLine);
+				foreach (var message in result)
+				{
+					Console.ForegroundColor = getColor(message.Type);
+					Console.WriteLine(message);
+					Console.ForegroundColor = ConsoleColor.White;
+				}
 				Console.WriteLine(endFileAnswer);
+
 
 				Console.WriteLine();
 				Console.WriteLine(Messages.ProgramTerminateOrRunAgain);
@@ -45,5 +51,22 @@ namespace WT.Presentation
 
 
 		}
+
+		private static ConsoleColor getColor(Message.MessageType type)
+		{
+			switch (type)
+			{
+				case Message.MessageType.Info:
+					return ConsoleColor.Green;
+				case Message.MessageType.Warning:
+					return ConsoleColor.Yellow;
+				case Message.MessageType.Error:
+					return ConsoleColor.Red;
+				default:
+					return ConsoleColor.Black;
+			}
+		}
+
+
 	}
 }

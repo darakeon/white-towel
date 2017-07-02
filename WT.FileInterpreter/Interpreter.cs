@@ -9,7 +9,7 @@ namespace WT.FileInterpreter
 	public class Interpreter
 	{
 		private String fileName { get; }
-		private IList<String> messages { get; }
+		private IList<Message> messages { get; }
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; }
 		internal IDictionary<String, Decimal> ThingValueDictionary { get; private set; }
@@ -20,7 +20,7 @@ namespace WT.FileInterpreter
 		public Interpreter(String fileName)
 		{
 			this.fileName = fileName;
-			messages = new List<String>();
+			messages = new List<Message>();
 
 			ConversionDictionary = new Dictionary<String, String>();
 			ThingValueDictionary = new Dictionary<String, Decimal>();
@@ -28,17 +28,17 @@ namespace WT.FileInterpreter
 
 
 
-		public IList<String> Execute()
+		public IList<Message> Execute()
 		{
 			if (!File.Exists(fileName))
 			{
-				return new List<String> {Messages.NotFound};
+				return new List<Message> { Message.Error(Messages.NotFound) };
 			}
 
 			return translate();
 		}
 
-		private IList<String> translate()
+		private IList<Message> translate()
 		{
 			var lines = File.ReadAllLines(fileName);
 
@@ -51,9 +51,21 @@ namespace WT.FileInterpreter
 			return messages;
 		}
 
-		internal void AddMessage(String message)
+
+
+		internal void AddInfo(String text)
 		{
-			messages.Add(message);
+			messages.Add(Message.Info(text));
+		}
+
+		internal void AddWarning(String text)
+		{
+			messages.Add(Message.Warning(text));
+		}
+
+		internal void AddError(String text)
+		{
+			messages.Add(Message.Error(text));
 		}
 
 	}

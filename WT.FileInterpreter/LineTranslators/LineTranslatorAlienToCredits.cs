@@ -29,7 +29,7 @@ namespace WT.FileInterpreter.LineTranslators
 					{
 						var message = String.Format(Messages.UnknownAlienToRomanConversion, numbers[n]);
 
-						Interpreter.AddMessage(message);
+						Interpreter.AddError(message);
 						return;
 					}
 
@@ -43,7 +43,7 @@ namespace WT.FileInterpreter.LineTranslators
 					value = null;
 
 					var message = String.Format(Messages.UnknownRomanNumber, romanDivisor);
-					Interpreter.AddMessage(message);
+					Interpreter.AddError(message);
 				}
 				else
 				{
@@ -56,7 +56,7 @@ namespace WT.FileInterpreter.LineTranslators
 				var message = Interpreter.ThingValueDictionary.HandleKeyValue(key, value.Value);
 
 				if (!String.IsNullOrEmpty(message))
-					Interpreter.AddMessage(message);
+					Interpreter.AddWarning(message);
 			}
 		}
 

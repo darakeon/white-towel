@@ -9,7 +9,7 @@ namespace WT.Tests
 {
 	public class FileStep
 	{
-		private IList<String> result;
+		private IList<Message> result;
 		private IDictionary<String, String> conversionDictionary;
 		private IDictionary<String, Decimal> thingValueDictionary;
 
@@ -46,7 +46,7 @@ namespace WT.Tests
 			for (var a = 0; a < answers.Length; a++)
 			{
 				message = String.Format(TestsErrors.AnswerLineError, a, answers[a], result[a]);
-				Assert.AreEqual(answers[a], result[a], message);
+				Assert.AreEqual(answers[a], result[a].Text, message);
 			}
 		}
 

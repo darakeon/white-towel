@@ -47,6 +47,7 @@
     <Compile Include="LineTranslators\BaseLineTranslator.cs" />
     <Compile Include="LineTranslators\LineTranslatorAskAlienToCredits.cs" />
     <Compile Include="LineTranslators\LineTranslatorAskAlienToNumber.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
