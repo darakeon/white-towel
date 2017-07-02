@@ -289,6 +289,25 @@ namespace WT.Tests
 
 
 		[TestMethod]
+		public void RandomMessage()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("big_mystery.txt", 
+			
+				"Why do people keep asking the gender of someone who not even talks?"
+
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"big_mystery.txt");
+			steps.ThenIWillHaveTheseAnswers("I have no idea what you are talking about");
+			steps.ThenIWillHaveNoConversions();
+			steps.ThenIWillHaveNoThingValues();
+		}
+
+
+
+		[TestMethod]
 		public void EntireExample()
 		{
 			var steps = new FileStep();
