@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.RegularExpressions;
 using WT.FileInterpreter.LineTranslators;
 using WT.Resources;
 
@@ -9,13 +8,11 @@ namespace WT.FileInterpreter
 {
 	public class Interpreter
 	{
-		private String fileName { get; set; }
-		private IList<String> messages { get; set; }
+		private String fileName { get; }
+		private IList<String> messages { get; }
 
 		internal IDictionary<String, String> ConversionDictionary { get; private set; }
 		internal IDictionary<String, Decimal> ThingValueDictionary { get; private set; }
-
-		public IList<BaseLineTranslator> LineTranslators = new List<BaseLineTranslator>();
 
 
 
@@ -41,8 +38,6 @@ namespace WT.FileInterpreter
 			return translate();
 		}
 
-
-
 		private IList<String> translate()
 		{
 			var lines = File.ReadAllLines(fileName);
@@ -50,25 +45,16 @@ namespace WT.FileInterpreter
 			foreach (var line in lines)
 			{
 				var translator = BaseLineTranslator.GetTranslator(this, line);
-				LineTranslators.Add(translator);
-			}
-
-			foreach (var translator in LineTranslators)
-			{
 				translator.Translate();
 			}
 
 			return messages;
 		}
 
-		private void translate(String line)
-		{
-			
-		}
-
 		internal void AddMessage(String message)
 		{
 			messages.Add(message);
 		}
+
 	}
 }
