@@ -25,10 +25,16 @@ namespace WT.FileInterpreter.LineTranslators
 
 		public static BaseLineTranslator GetTranslator(Interpreter interpreter, String line)
 		{
-			return getTranslator<LineTranslatorAlienToRoman>(interpreter, line)
+			var translator =
+				getTranslator<LineTranslatorAlienToRoman>(interpreter, line)
 				?? getTranslator<LineTranslatorAlienToCredits>(interpreter, line)
 				?? getTranslator<LineTranslatorAskAlienToNumber>(interpreter, line)
 				?? getTranslator<LineTranslatorAskAlienToCredits>(interpreter, line);
+
+			if (translator == null)
+				interpreter.AddMessage(FileTranslation.AnswerNoIdea);
+
+			return translator;
 		}
 
 		private static BaseLineTranslator getTranslator<T>(Interpreter interpreter, String line)

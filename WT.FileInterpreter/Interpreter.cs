@@ -45,7 +45,7 @@ namespace WT.FileInterpreter
 			foreach (var line in lines)
 			{
 				var translator = BaseLineTranslator.GetTranslator(this, line);
-				translator.Translate();
+				translator?.Translate();
 			}
 
 			return messages;
