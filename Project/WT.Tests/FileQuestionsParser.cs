@@ -99,7 +99,7 @@ namespace WT.Tests
 
 			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 
-			steps.ThenIWillHaveTheseAnswers("Unknown alien number or thing: 'tegj'");
+			steps.ThenIWillHaveTheseAnswers("Unknown alien number or thing: 'tegj glob glob'");
 
 			steps.ThenIWillHaveTheseConversions(
 				Tuple.Create("glob", "I"),
@@ -200,7 +200,7 @@ namespace WT.Tests
 
 			steps.WhenICallTheInterpreterForFile(@"towel.txt");
 
-			steps.ThenIWillHaveTheseAnswers("Unknown alien number or thing: 'prok'");
+			steps.ThenIWillHaveTheseAnswers("Unknown alien number or thing: 'prok Silver'");
 
 			steps.ThenIWillHaveTheseConversions(
 				Tuple.Create("glob", "I"),
@@ -394,6 +394,56 @@ namespace WT.Tests
 				Tuple.Create("Silver", 17m),
 				Tuple.Create("Gold", 14450m),
 				Tuple.Create("Iron", 195.5m)
+			);
+		}
+
+
+
+		[TestMethod]
+		public void EntireExampleWithSpace()
+		{
+			var steps = new FileStep();
+
+			steps.GivenIHaveThisFile("vagas-challenge-1.txt"
+				, "Lollipop Candy is 20 Credits"
+				, "glob is I"
+				, "prok is V"
+				, "pish is X"
+				, "tegj is L"
+				, "glob glob Silver is 34 Credits"
+				, "glob prok Gold is 57800 Credits"
+				, "pish pish Iron is 3910 Credits"
+				, "how much is pish tegj glob glob ?"
+				, "how many Credits is glob prok Silver ?"
+				, "how many Credits is glob prok Gold ?"
+				, "how many Credits is glob prok Iron ?"
+				, "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"
+				, "how many Credits is glob glob Lollipop Candy ? "
+			);
+
+			steps.WhenICallTheInterpreterForFile(@"vagas-challenge-1.txt");
+
+			steps.ThenIWillHaveTheseAnswers(
+				"pish tegj glob glob is 42",
+				"glob prok Silver is 68 Credits",
+				"glob prok Gold is 57800 Credits",
+				"glob prok Iron is 782 Credits",
+				"I have no idea what you are talking about",
+				"glob glob Lollipop Candy is 40 Credits"
+			);
+
+			steps.ThenIWillHaveTheseConversions(
+				Tuple.Create("glob", "I"),
+				Tuple.Create("prok", "V"),
+				Tuple.Create("pish", "X"),
+				Tuple.Create("tegj", "L")
+			);
+
+			steps.ThenIWillHaveTheseThingValues(
+				Tuple.Create("Silver", 17m),
+				Tuple.Create("Gold", 14450m),
+				Tuple.Create("Iron", 195.5m),
+				Tuple.Create("Lollipop Candy", 20m)
 			);
 		}
 

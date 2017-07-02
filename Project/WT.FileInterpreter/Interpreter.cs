@@ -59,7 +59,7 @@ namespace WT.FileInterpreter
 
 			for (var l = 0; l < lines.Length; l++)
 			{
-				var line = lines[l];
+				var line = lines[l]?.Trim();
 				var translator = BaseLineTranslator.GetTranslator(this, line, l);
 				translators.Add(translator);
 			}

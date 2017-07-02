@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using WT.Generics;
 using WT.Resources;
 
@@ -21,20 +22,36 @@ namespace WT.FileInterpreter.LineTranslators
 
 			var roman = String.Empty;
 			var thing = 1m;
+			var lastRoman = parts.Length;
 
-			foreach (var part in parts)
+			for (var p = 0; p < parts.Length; p++)
 			{
+				var part = parts[p];
+				
 				if (Interpreter.ConversionDictionary.ContainsKey(part))
 				{
 					roman += Interpreter.ConversionDictionary[part];
 				}
-				else if (Interpreter.ThingValueDictionary.ContainsKey(part))
+				else
 				{
-					thing *= Interpreter.ThingValueDictionary[part];
+					lastRoman = p;
+                    break;
+				}
+			}
+
+			parts = parts.Skip(lastRoman).ToArray();
+
+			if (parts.Any())
+			{
+				var thingName = String.Join(" ", parts);
+
+				if (Interpreter.ThingValueDictionary.ContainsKey(thingName))
+				{
+					thing *= Interpreter.ThingValueDictionary[thingName];
 				}
 				else
 				{
-					var message = String.Format(Messages.UnknownAlienNumberOrThing, part);
+					var message = String.Format(Messages.UnknownAlienNumberOrThing, thingName);
 					Interpreter.AddError(message, Order);
 					return;
 				}
